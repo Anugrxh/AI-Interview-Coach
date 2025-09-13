@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+    "corsheaders",
     #apps
     'authentication',
     'interviews',
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'ai_interview_coach.urls'
@@ -151,4 +153,5 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = "authentication.CustomUser"
+CORS_ALLOW_ALL_ORIGINS = True
 
