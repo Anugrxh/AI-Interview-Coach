@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -154,4 +154,8 @@ SIMPLE_JWT = {
 
 AUTH_USER_MODEL = "authentication.CustomUser"
 CORS_ALLOW_ALL_ORIGINS = True
+
+# settings.py
+VAPI_PUBLIC_KEY = os.environ.get('VAPI_PUBLIC_KEY')
+VAPI_PRIVATE_KEY = os.environ.get('VAPI_PRIVATE_KEY')
 

@@ -17,3 +17,20 @@ class InterviewSessionCreateView(APIView):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
+from .models import InterviewSession
+from .serializers import InterviewSessionHistorySerializer
+
+class InterviewHistoryView(ListAPIView):
+    serializer_class = InterviewSessionHistorySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return InterviewSession.objects.filter(user=self.request.user).order_by('-created_at')
+
+
+
