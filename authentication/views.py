@@ -1,6 +1,6 @@
 
 from .serializers import UserRegistrationSerializer
-
+from .models import CustomUser
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -14,8 +14,8 @@ class UserRegistrationView(APIView):
             user=serializer.save()
             return Response({
                 "message": "User registered successfully",
-                "email": user.email,
-                "name": user.name
+                "email": CustomUser.email,
+                "name": CustomUser.name
 
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
